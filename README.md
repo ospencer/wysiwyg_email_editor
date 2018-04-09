@@ -1,3 +1,29 @@
+# Email Template Editor
+
+## tl;dr
+
+I generated the initial code from Create React App. The code should be fairly straightforward to follow, but a decent place to start would be App.js. Most things should be fairly well documented. Please excuse the inline styles; what's there is just for basic layout.
+
+TODO:
+
+- Tests
+- Proper styling (probably something CSS-in-JS, I'm particularly fond of Emotion (also will make inlining all the styles for the email pretty easy since they'd already be in the code)). Inline styles are actually _kind of_ okay since we'll need to inline all of the styles in the end anyway, but it's a lot more performant and managable to use real classes and then inline everything at final template render time
+- Full template preview (basically just a clean render of the template with all the styles inline, then a ReactDOM `renderToStaticMarkup()` to get the actual HTML)
+- Allowing new templates to be created from the UI (the code should support it just fine, there's just no way to add a template through the UI)
+- Allow deleting blocks (again, code is good for it with minor caveat below)
+- Allow inserting blocks when there are no blocks in the template
+- Hook this up to an actual backend
+
+### Running
+
+With node 9+ and yarn:
+```sh
+yarn
+yarn start
+```
+
+# Create React App's Generated Readme
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

@@ -1,20 +1,21 @@
 import React from 'react';
-import { Editor, EditorState, RichUtils } from 'draft-js';
+import { Editor, RichUtils } from 'draft-js';
 
 import Controls from './Controls';
 
 export default class RichTextEditor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      editorState: EditorState.createEmpty()
-    };
-    this.onChange = (editorState) => this.setState({ editorState });
+    this.onChange = this.onChange.bind(this);
     this.handleKeyCommand = this.handleKeyCommand.bind(this);
     this.toggleBlockType = this.toggleBlockType.bind(this);
     this.toggleInlineStyle = this.toggleInlineStyle.bind(this);
   }
 
+  onChange(editorState) {
+    this.props.updateBlockEditorState(editorState);
+  }
+  
   handleKeyCommand(command, editorState) {
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
@@ -27,7 +28,7 @@ export default class RichTextEditor extends React.Component {
   toggleBlockType(blockType) {
     this.onChange(
       RichUtils.toggleBlockType(
-        this.state.editorState,
+        this.props.editorState,
         blockType
       )
     );
@@ -36,7 +37,7 @@ export default class RichTextEditor extends React.Component {
   toggleInlineStyle(inlineStyle) {
     this.onChange(
       RichUtils.toggleInlineStyle(
-        this.state.editorState,
+        this.props.editorState,
         inlineStyle
       )
     );
@@ -46,12 +47,12 @@ export default class RichTextEditor extends React.Component {
     return (
       <div>
         <Controls 
-          editorState={this.state.editorState}
+          editorState={this.props.editorState}
           toggleBlockType={this.toggleBlockType} 
           toggleInlineStyle={this.toggleInlineStyle}
         />
         <Editor
-          editorState={this.state.editorState}
+          editorState={this.props.editorState}
           onChange={this.onChange}
           handleKeyCommand={this.handleKeyCommand}
         />

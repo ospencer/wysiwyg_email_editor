@@ -5,6 +5,8 @@
   "dependencies": {
     "draft-js": "^0.10.5",
     "react": "^16.3.1",
+    "react-dnd": "^2.6.0",
+    "react-dnd-html5-backend": "^2.6.0",
     "react-dom": "^16.3.1",
     "react-scripts": "1.1.4"
   },

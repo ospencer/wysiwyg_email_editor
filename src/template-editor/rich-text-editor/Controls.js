@@ -1,7 +1,7 @@
 import React from 'react';
 
-const BLOCK_TYPES = [
-  { label: 'Normal', style: 'unstyled' },
+const TEXT_TYPES = [
+  { label: 'Normal', style: 'paragraph' },
   { label: 'H1', style: 'header-one' },
   { label: 'H2', style: 'header-two' },
   { label: 'H3', style: 'header-three' },
@@ -21,16 +21,16 @@ const INLINE_STYLES = [
   { label: 'Monospace', style: 'CODE' },
 ];
 
-const BlockSelect = ({ editorState, toggleBlockType }) => {
+const TextTypeSelect = ({ editorState, toggleBlockType }) => {
   const selection = editorState.getSelection();
   const blockType = editorState
     .getCurrentContent()
     .getBlockForKey(selection.getStartKey())
     .getType();
   return (
-    <select onChange={(event) => toggleBlockType(event.target.value)}>
-      {BLOCK_TYPES.map(({ label, style }) => (
-        <option value={style} selected={style === blockType}>{label}</option>
+    <select onChange={(event) => toggleBlockType(event.target.value)} value={blockType}>
+      {TEXT_TYPES.map(({ label, style }) => (
+        <option value={style} key={style}>{label}</option>
       ))}
     </select>
   );
@@ -41,7 +41,7 @@ const InlineStyleSelection = ({ editorState, toggleInlineStyle }) => {
   return (
     <div style={{display: 'flex'}}>
       {INLINE_STYLES.map(({ label, style }) => (
-        <button onClick={() => toggleInlineStyle(style)}>
+        <button key={style} onClick={() => toggleInlineStyle(style)}>
           {label}{currentStyle.has(style) ? '*' : null}
         </button>
       ))}
@@ -51,7 +51,7 @@ const InlineStyleSelection = ({ editorState, toggleInlineStyle }) => {
 
 const Controls = ({ editorState, toggleBlockType, toggleInlineStyle }) => (
   <div>
-    <BlockSelect 
+    <TextTypeSelect 
       editorState={editorState}
       toggleBlockType={toggleBlockType} 
     />
