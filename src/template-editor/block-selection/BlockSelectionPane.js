@@ -3,7 +3,7 @@ import { DragSource } from 'react-dnd';
 
 import { 
   BLOCKS, DRAG_SOURCE_TYPE
-} from '../shared/Constants';
+} from '../../shared/Constants';
 
 const dragSourceContract = {
   beginDrag({ blockType }) {

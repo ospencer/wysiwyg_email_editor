@@ -1,7 +1,7 @@
 import React from 'react';
 import { DropTarget } from 'react-dnd';
 
-import { DRAG_SOURCE_TYPE } from '../shared/Constants';
+import { DRAG_SOURCE_TYPE } from '../../shared/Constants';
 
 const dropTargetContract = {
   drop({ insertBlock, index }, monitor, component) {

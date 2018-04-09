@@ -1,7 +1,7 @@
 import React from 'react';
 
 import TextBlock from '../block/TextBlock';
-import { BLOCK_TYPES } from '../shared/Constants';
+import { BLOCK_TYPES } from '../../shared/Constants';
 
 export default class LivePreview extends React.PureComponent {
   constructor(props) {

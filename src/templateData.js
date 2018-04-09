@@ -67,7 +67,7 @@ const convertRawDataToTemplate = (rawTemplate) => {
  * This would probably be making network requests against some backend.
  * @returns {Object} - Templates in storage, keyed by name
  */
-const retrieveTemplates = () => {
+export const retrieveTemplates = () => {
   const savedTemplatesData = localStorage.getItem(TEMPLATES_KEY) || '{}';
   let savedTemplates;
   // Protect against tampered/corrupted data.
@@ -91,7 +91,7 @@ const retrieveTemplates = () => {
  * Save the template to localStorage.
  * @param {Object} template 
  */
-const saveTemplate = (template) => {
+export const saveTemplate = (template) => {
   const metadata = {
     name: template.name,
     lastModified: new Date()
